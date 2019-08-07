@@ -1,9 +1,4 @@
-import scrapy
-import json
-
-class QuotesSpider(scrapy.Spider):
-    name = 'van-college'
-    start_urls = [
+[
 "https://targetstudy.com/institute/22574/academy-of-radio-management/",
 "https://targetstudy.com/institute/28553/academy-of-technology-management/",
 "https://targetstudy.com/institute/56883/academy-touch-educational-services/",
@@ -213,43 +208,5 @@ class QuotesSpider(scrapy.Spider):
 "https://targetstudy.com/institute/34023/bharti-institute-of-vedic-astrology/",
 "https://targetstudy.com/institute/83943/gford-institute-of-management-pvt-ltd/",
 "https://targetstudy.com/institute/32999/council-of-scientific-and-industrial-research-csir/",
-"https://targetstudy.com/institute/80818/bharti-school-of-telecommunication-technology-and-management-bsttm/",
+"https://targetstudy.com/institute/80818/bharti-school-of-telecommunication-technology-and-management-bsttm/"
 ]
-    def parse(self, response):
-        yield {
-            'LOGO-IMG':(response.css('#user_profile_header img::attr(src)').get()),
-            'NAME':(response.css('h1::text').get()),
-            'DETAILS':(response.css('h2::text').get()),
-            'ABOUT': (response.css('p::text').get()),
-            'LOCATION': (response.css('.location::text').get()),
-            'TWITTER': (response.css('a.twitter::attr(href)').get()),
-            'LINKEDIN': (response.css(' a.linkedin::attr(href)').get()),
-            'RANKING': (response.css('.profile_data span::attr(data-ranking)').get()),
-            'AVAILABLE FOR 1': (response.css(' .tag:nth-child(1)::text').get()),
-            'AVAILABLE FOR 2': (response.css(' .tag:nth-child(2)::text').get()),
-            'AVAILABLE FOR 3': (response.css(' .tag:nth-child(3)::text').get()),
-            'AVAILABLE FOR 4': (response.css(' .tag:nth-child(4)::text').get()),
-            'AVAILABLE FOR 5': (response.css(' .tag:nth-child(5)::text').get()),
-            'AVAILABLE FOR 6': (response.css(' .tag:nth-child(6)::text').get()),
-            'Associated ICOs 1': (response.css(' .row:nth-child(1) .group::text').get()),
-            'Associated ICOs 2': (response.css(' .row:nth-child(2) .group::text').get()),
-            'Associated ICOs 3': (response.css(' .row:nth-child(3) .group::text').get()),
-            'Associated ICOs 4': (response.css(' .row:nth-child(4) .group::text').get()),
-            'Associated ICOs 5': (response.css(' .row:nth-child(5) .group::text').get()),
-            'Associated ICOs 6': (response.css(' .row:nth-child(6) .group::text').get()),
-            'Associated ICOs 7': (response.css(' .row:nth-child(7) .group::text').get()),
-            'RATES': (response.css(' .col_3:nth-child(1)::text').get()),
-            'AVERAGE': (response.css(' .col_3:nth-child(2)::text').get()),
-            'PROFILE SCORE': (response.css(' .row:nth-child(1) .value::text').get()),
-            'RATING SCORE': (response.css(' .row:nth-child(2) .value::text').get()),
-            'TIME SCORE': (response.css(' .row:nth-child(2) .value::text').get()),
-            'ISS': (response.css(' .row:nth-child(4) .value::text').get()),
-            'ACCEPTANCE SCORE': (response.css(' .row:nth-child(5) .value::text').get()),
-            'KYC SCORE': (response.css(' .row:nth-child(6) .value::text').get()),
-            'CONTRIBUTION SCORE': (response.css(' .row:nth-child(7) .value::text').get()),
-            'WEIGHT DISTRIBUTION': (response.css('  .weight_number b::text').get()),
-            }
-
-        # if QuotesSpider.page_no < 3:
-        #     QuotesSpider.page_no += 1
-        #     yield response.follow('https://icobench.com/ico/' + lister[page_no], self.parse)
